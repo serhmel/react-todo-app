@@ -1,13 +1,208 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.mr_list {
+  margin: 0 auto;
+  max-width: 550px;
+}
+
+.mr_toDo {
+  position: relative;
+  width: 100%;
+  background-color: white;
+  border: none;
+}
+
+.mr_listHeader {
+  position: relative;
+  font-size: 100px;
+  font-weight: 100;
+  text-align: center;
+  color: rgba(175, 47, 47, 0.15);
+}
+
+.mr_newTask {
+  font-size: 24px;
+  line-height: 1.4em;
+  max-width: 500px;
+  border: none;
+  margin: 0;
+  padding: 16px 16px 16px 60px;
+}
+
+.mr_newTask::-webkit-input-placeholder {
+  opacity: 0.4;
+}
+
+.mr_newTask:focus-visible {
+  outline: none;
+}
+
+.mr_list ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #e6e6e6;
+}
+
+.mr_list li {
+  display: flex;
+  padding: 10px 10px;
+  list-style-type: none;
+  font-size: 24px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.mr_list label {
+  display: block;
+  line-height: 1.4;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.mr_toggleItem {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.mr_toggleAllItem {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  width: 40px;
+  height: 40px;
+  background: none;
+}
+
+.mr_toggleAllItem + label {
+  position: absolute;
+  width: 60px;
+  height: 34px;
+  font-size: 0;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.mr_toggleAllItem + label:before {
+  content: '❯';
+  color: #e6e6e6;
+  font-size: 22px;
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  width: 34px;
+  height: 34px;
+  padding: 27px 0 0 15px;
+}
+
+.mr_toggleAllItem:checked+label::before {
+  color: #4d4d4d;
+  font-weight: 300;
+}
+
+.mr_toggleItem+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.mr_toggleItem+label::before {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 100%;
+  margin-right: 0.5em;
+}
+
+.mr_toggleItem:checked+label::before {
+  content: "🗸";
+  border: 1px solid rgb(93, 194, 175);
+  text-align: center;
+  color: rgb(93, 194, 175);
+  opacity: 1;
+}
+
+.mr_actionButtons {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.mr_toggleItem:checked ~ .mr_taskName div {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+.mr_closeTask {
+  display: none;
+  text-align: right;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 30px;
+  color: #cc9a9a;
+}
+
+.mr_closeTask:hover {
+  color: #af5b5e;
+}
+
+.mr_toDo li:hover .mr_closeTask {
+  display: block;
+}
+
+.mr_toDo li .mr_closeTask:after {
+  content: '×';
+}
+
+.mr_action {
+  position: relative;
+  padding: 10px;
+  display: block;
+  height: 20px;
+}
+
+.mr_itemCount {
+  float: left;
+  padding: 3px 7px;
+}
+
+.mr_clearCompleted {
+  float: right;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  padding: 3px 7px;
+}
+
+.mr_clearCompleted:hover {
+  text-decoration: underline;
+}
+
+.mr_actionButton {
+  margin: 0 3px;
+  padding: 3px 7px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.mr_actionButton:hover {
+  border: 1px solid #c3c9ce;
+}
+
+.mr_actionButton:focus {
+  border: 1px solid #a3a9af;
 }
